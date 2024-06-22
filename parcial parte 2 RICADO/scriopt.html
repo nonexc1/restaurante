@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ozonoterapia</title>
+</head>
+
+<body>
+    <h1>Calculadora de Concentración de Ozono</h1>
+    <form id="ozoneForm">
+        <label for="weight">Peso del Paciente (kg):</label>
+        <input type="number" id="weight" name="weight" required><br><br>
+
+        <label for="doseType">Tipo de Dosis:</label>
+        <select id="doseType" name="doseType" required>
+            <option value="1">Baja (1 µg/kg)</option>
+            <option value="2">Media (2 µg/kg)</option>
+            <option value="3">Alta (3 µg/kg)</option>
+            <option value="5">Súper Alta (5 µg/kg)</option>
+        </select><br><br>
+
+        <label for="solutionVolume">Volumen de Solución Salina (ml):</label>
+        <input type="number" id="solutionVolume" name="solutionVolume" value="200" required><br><br>
+
+        <input type="button" value="Calcular" onclick="calculateOzone()">
+    </form>
+
+    <h2>Resultados:</h2>
+    <div id="results"></div>
+
+    <script>
+        function calculateOzone() {
+            // Obtener valores del formulario
+            const weight = parseFloat(document.getElementById('weight').value);
+            const doseType = parseFloat(document.getElementById('doseType').value);
+            const solutionVolume = parseFloat(document.getElementById('solutionVolume').value);
+
+            // Calcular la dosis total basada en el peso del paciente
+            const totalDose = doseType * weight;
+
+            // Calcular la concentración de ozono disuelto en la solución salina
+            const dissolvedOzoneConcentration = totalDose / solutionVolume;
+
+            // Calcular la concentración de ozono a la salida del generador (multiplicar por 4)
+            const generatorOzoneConcentration = dissolvedOzoneConcentration * 4;
+
+            // Calcular la pérdida de ozono
+            const lostOzoneConcentration = generatorOzoneConcentration - dissolvedOzoneConcentration;
+
+            // Mostrar resultados
+            document.getElementById('results').innerHTML = `
+                <p>Concentración de Ozono a la Salida del Generador: ${generatorOzoneConcentration.toFixed(2)} µg/ml</p>
+                <p>Dosis Total: ${totalDose.toFixed(2)} µg</p>
+                <p>Concentración de Ozono Disuelto en la Solución: ${dissolvedOzoneConcentration.toFixed(2)} µg/ml</p>
+                <p>Pérdida de Ozono por el Destructor: ${lostOzoneConcentration.toFixed(2)} µg/ml</p>
+            `;
+        }
+    </script>
+</body>
+
+</html>

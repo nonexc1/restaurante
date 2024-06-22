@@ -1,0 +1,253 @@
+@media (max-width: 1100px) {
+    .cabecera {
+        width: 1000px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cabecera__two {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header_container {
+        max-width: 1000px;
+    }
+
+    .header_content {
+        flex-basis: 50%;
+    }
+
+    .row_header {
+        flex-direction: column;
+    }
+
+    .header_text h2 {
+        font-size: 40px;
+    }
+
+    .header_text p {
+        font-size: 15px;
+    }
+
+    .top-section .row {
+        justify-content: left;
+    }
+
+    .conocemas_container {
+        max-width: 1000px;
+        padding-left: 20px;
+    }
+}
+
+.conocemas_text {
+    width: 68%;
+}
+
+.conocemas_text h2 {
+    font-size: 25px;
+}
+
+.conocemas_info {
+    width: 50%;
+}
+
+.row2 {
+    flex-direction: column;
+}
+
+.icons_container {
+    width: 1000px;
+}
+
+.icons_row {
+    display: flex;
+    gap: 20px;
+}
+
+.aboutus__container {
+    width: 1000px;
+}
+
+.number__column {
+    width: 280px;
+}
+
+.modal__container {
+    width: 990px;
+    height: 600px;
+}
+
+.gallery__container {
+    max-width: 1100px;
+}
+
+.img-container {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+}
+
+@media (max-width:800px) {
+    .cabecera {
+        width: 800px;
+    }
+
+    .header_container {
+        max-width: 750px;
+    }
+
+    .button {
+        width: 170px;
+    }
+
+    .img_restaurante-1 {
+        height: 380px;
+        width: 223px;
+        border-radius: 20px;
+    }
+
+    .img_restaurante-2 {
+        height: 460px;
+        width: 223px;
+        border-radius: 20px;
+    }
+
+    .conocemas_container {
+        padding-left: 20px;
+    }
+
+    .icons_row {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .number__row2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .number__row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .appoiment_content img {
+        flex-basis: 30%;
+        width: 50%;
+        object-fit: cover;
+    }
+
+    .modal__container {
+        width: 650px;
+        height: 550px;
+    }
+
+    .appoiment_content {
+        width: 96%;
+    }
+
+    .appoiment_content .button {
+        margin-top: 0;
+    }
+
+    .gallery__container .row {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        align-items: flex-end;
+    }
+}
+
+@media (max-width:600px) {
+    .cabecera {
+        width: 800px;
+    }
+
+    .header_container {
+        max-width: 750px;
+    }
+
+    .button {
+        width: 150px;
+    }
+
+    .img_restaurante-1 {
+        height: 330px;
+        width: 183px;
+        border-radius: 20px;
+    }
+
+    .img_restaurante-2 {
+        height: 330px;
+        width: 183px;
+        border-radius: 20px;
+    }
+
+    .conocemas_container {
+        padding-left: 20px;
+    }
+
+    .icons_row {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .number__row2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutus__container{
+        width: 800px;
+        }   
+        .aboutus__title{
+            text-align: left;
+        }
+    .aboutus__content h1{
+        text-align:left;
+    }
+    .aboutus__content span{
+        text-align:left;
+    }
+    .number__row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .chefs__container{
+        width: 800px;
+        text-align: -webkit-auto;
+    }
+    
+    .chefs__container h1{
+        font-size:18px;
+    }
+    .chefs__title h3{
+        font-size: 13px;
+    }
+    .appoiment_content img {
+        flex-basis: 25%;
+        width: 45%;
+        object-fit: cover;
+    }
+
+    .modal__container {
+        width: 550px;
+        height: 450px;
+    }
+
+    .appoiment_content {
+        width: 96%;
+    }
+
+    .appoiment_content .button {
+        margin-top: 0;
+    }
+
+    .gallery__container .row {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
