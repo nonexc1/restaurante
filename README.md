@@ -28,7 +28,15 @@ Incluye el análisis del video de referencia y un plan de negocio completo:
 - **Productos** con precio, promo, costo, margen, stock (se descuenta al vender y se repone al cancelar) y FAQ.
 - **Simulador** para probar el bot sin conectar ningún canal.
 
-## Instalación (local)
+## Verla en tu computadora (lo más fácil)
+
+1. Instala **Node.js LTS** desde <https://nodejs.org>.
+2. Descarga este proyecto (botón **Code → Download ZIP** en GitHub) y descomprímelo.
+3. **Windows:** doble clic en `iniciar.bat`. **Mac/Linux:** ejecuta `./iniciar.sh`.
+4. Se abre el navegador en <http://localhost:3000>. El usuario y la contraseña aparecen en la ventana negra
+   (la contraseña se genera sola la primera vez y queda guardada en el archivo `.env`).
+
+## Instalación manual (local)
 
 Requisitos: **Node.js 22.5 o superior** (usa SQLite integrado, no necesita base de datos externa).
 
