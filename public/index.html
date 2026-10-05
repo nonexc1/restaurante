@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VendeBot CRM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">VendeBot <span>CRM</span></div>
+    <nav>
+      <button data-view="dashboard" class="active">📊 Resumen</button>
+      <button data-view="inbox">💬 Conversaciones <b id="badge-unattended" class="badge" hidden></b></button>
+      <button data-view="orders">📦 Pedidos <b id="badge-verify" class="badge" hidden></b></button>
+      <button data-view="products">🛒 Productos</button>
+      <button data-view="simulator">🧪 Probar bot</button>
+      <button data-view="settings">⚙️ Ajustes</button>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- RESUMEN -->
+    <section id="view-dashboard" class="view active">
+      <h1>Resumen</h1>
+      <div class="cards" id="stats-cards"></div>
+      <div class="grid2">
+        <div class="panel"><h3>Pedidos por estado</h3><div id="stats-status"></div></div>
+        <div class="panel"><h3>Integraciones</h3><div id="stats-integrations"></div></div>
+      </div>
+    </section>
+
+    <!-- BANDEJA -->
+    <section id="view-inbox" class="view">
+      <div class="inbox">
+        <div class="conv-list">
+          <div class="filters">
+            <input id="conv-search" placeholder="Buscar nombre o número…">
+            <div class="tabs" id="conv-tabs">
+              <button data-status="" class="active">Todas</button>
+              <button data-status="venta">Ventas</button>
+              <button data-status="no_atendida">No atendidas</button>
+              <button data-status="cerrada">Cerradas</button>
+            </div>
+            <select id="conv-channel">
+              <option value="">Todos los canales</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="instagram">Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="telegram">Telegram</option>
+              <option value="web">Pruebas</option>
+            </select>
+          </div>
+          <ul id="conv-items"></ul>
+        </div>
+        <div class="chat" id="chat">
+          <div class="empty">Selecciona una conversación</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PEDIDOS -->
+    <section id="view-orders" class="view">
+      <div class="toolbar">
+        <h1>Pedidos</h1>
+        <input id="order-search" placeholder="Código, DNI, nombre, celular o guía…">
+        <select id="order-status"><option value="">Todos los estados</option></select>
+        <select id="order-payment">
+          <option value="">Todos los pagos</option>
+          <option value="por_verificar">Comprobante por verificar</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="adelanto_pagado">Adelanto pagado</option>
+          <option value="pagado">Pagado</option>
+        </select>
+        <button id="btn-refresh-tracking" class="secondary">↻ Actualizar tracking Shalom</button>
+      </div>
+      <div class="table-wrap">
+        <table id="orders-table">
+          <thead><tr><th>Código</th><th>Fecha</th><th>Cliente</th><th>Productos</th><th>Entrega</th><th>Total</th><th>Pago</th><th>Estado</th><th>Guía</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="view-products" class="view">
+      <div class="toolbar"><h1>Productos</h1><button id="btn-new-product">+ Nuevo producto</button></div>
+      <div class="table-wrap">
+        <table id="products-table">
+          <thead><tr><th>Producto</th><th>Precio</th><th>Promo</th><th>Costo</th><th>Margen</th><th>Stock</th><th>Activo</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SIMULADOR -->
+    <section id="view-simulator" class="view">
+      <h1>Probar el bot</h1>
+      <p class="muted">Escribe como si fueras un cliente. Las conversaciones de prueba aparecen en la bandeja con el canal "Pruebas".</p>
+      <div class="sim">
+        <div id="sim-log" class="messages"></div>
+        <form id="sim-form" class="composer">
+          <input id="sim-input" placeholder="Hola, ¿precio del ventilador? Soy de Piura" autocomplete="off">
+          <button>Enviar</button>
+          <button type="button" id="sim-img" class="secondary" title="Simula enviar una foto del voucher">📷</button>
+          <button type="button" id="sim-reset" class="secondary">Nuevo cliente</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- AJUSTES -->
+    <section id="view-settings" class="view">
+      <h1>Ajustes</h1>
+      <div class="panel">
+        <h3>Instrucciones extra para el bot</h3>
+        <p class="muted">Promociones vigentes, horarios, políticas de cambio, respuestas a objeciones… El bot las sigue al pie de la letra.</p>
+        <textarea id="bot-extra" rows="10"></textarea>
+        <button id="btn-save-settings">Guardar</button>
+      </div>
+      <div class="panel">
+        <h3>Datos del negocio</h3>
+        <p class="muted">Se configuran en el archivo <code>.env</code> (nombre, Yape, adelanto, delivery Lima).</p>
+        <pre id="business-info"></pre>
+      </div>
+      <div class="panel">
+        <h3>Shalom</h3>
+        <button id="btn-shalom-status" class="secondary">Probar conexión</button>
+        <pre id="shalom-status"></pre>
+        <label>Buscar agencias <input id="agency-search" placeholder="Ej: Arequipa Cayma"></label>
+        <ul id="agency-results" class="agency-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="modal"><div id="modal-body"></div></dialog>
+  <div id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

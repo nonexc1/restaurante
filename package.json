@@ -1,0 +1,23 @@
+{
+  "name": "vendebot-crm",
+  "version": "1.0.0",
+  "description": "CRM omnicanal (WhatsApp, Instagram, Facebook, Telegram) con bot IA, gestión de pedidos y guías Shalom para ventas contraentrega en Perú",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env src/server.js",
+    "dev": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env --watch src/server.js",
+    "seed": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env src/seed.js",
+    "simulate": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env scripts/simulate-chat.js",
+    "telegram:webhook": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env scripts/set-telegram-webhook.js",
+    "shalom:setup": "node --no-warnings=ExperimentalWarning --env-file-if-exists=.env scripts/shalom-setup.js",
+    "test": "node --no-warnings=ExperimentalWarning --test test/*.test.js"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "express": "^4.21.2"
+  }
+}
